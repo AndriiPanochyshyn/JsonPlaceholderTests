@@ -13,7 +13,6 @@ namespace UI.Google.SearchResults.RandomWebSite
         public void CheckTitle(string text)
         {
             Page.WaitUntilExists(Elements.Title);
-            var x = Page.Title;
             Assert.That(Page.Title.ToLower().Contains(text));
         }
     }
