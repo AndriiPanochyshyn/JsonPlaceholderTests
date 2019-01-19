@@ -16,17 +16,21 @@ namespace Tests.Steps
         [Given(@"User opens Google main page")]
         public void GivenUserOpenGoogleMainPage()
         {
-            ScenarioContext.Current.Pending();
+            _ui.Open();
+            _ui.Assert.WaitMainPageOpening();
         }
 
         [Given(@"User input '(.*)' to google entry field")]
-        public void GivenUserInputToGoogleEntryField(string p0)
+        public void GivenUserInputToGoogleEntryField(string searchText)
         {
+            _ui.SetSearch(searchText);
         }
 
-        [Then(@"User press '(.*)' on keyboard")]
-        public void ThenUserPressOnKeyboard(string p0)
+        [Given(@"User press '(.*)' on keyboard after input text to google")]
+        [Then(@"User press '(.*)' on keyboard after input text to google")]
+        public void ThenUserPressOnKeyboard(string button)
         {
+            _ui.PressOnKeyboard(button);
         }
     }
 }

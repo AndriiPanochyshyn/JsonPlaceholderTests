@@ -67,8 +67,12 @@
     <Compile Include="Hooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Steps\GoogleMainPageSteps.cs" />
+    <Compile Include="Steps\GoogleSearchResultsSteps.cs" />
+    <Compile Include="Steps\RandomWebsiteSteps.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Features\GoogleAutomationSearch.feature">

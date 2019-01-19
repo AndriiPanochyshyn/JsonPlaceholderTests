@@ -69,20 +69,55 @@ namespace Tests.Features
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 3
+#line 5
+ testRunner.Given("User opens Google main page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+        }
+        
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Verify that title contains searched word \'Automation\' after opening first link")]
         public virtual void VerifyThatTitleContainsSearchedWordAutomationAfterOpeningFirstLink()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify that title contains searched word \'Automation\' after opening first link", null, ((string[])(null)));
-#line 3
+#line 7
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 5
- testRunner.Given("User opens Google main page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 6
-   testRunner.And("User input \'automation\' to google entry field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 7
-  testRunner.Then("User press \'Enter\' on keyboard", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 3
+this.FeatureBackground();
+#line 9
+ testRunner.Given("User input \'automation\' to google entry field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 10
+  testRunner.Then("User press \'Enter\' on keyboard after input text to google", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 12
+  testRunner.When("User opens first link after search", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 13
+  testRunner.Then("User expect website title contains \'automation\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify that there is domain on search results pages 1-5")]
+        [NUnit.Framework.TestCaseAttribute("automation", "testautomationday.com", null)]
+        [NUnit.Framework.TestCaseAttribute("testautomationday.com", "testautomationday.com", null)]
+        [NUnit.Framework.TestCaseAttribute("testautomation", "https://www.training.epam.ua/", null)]
+        public virtual void VerifyThatThereIsDomainOnSearchResultsPages1_5(string textForSearch, string searchResult, string[] exampleTags)
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify that there is domain on search results pages 1-5", null, exampleTags);
+#line 15
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line 17
+ testRunner.Given(string.Format("User input \'{0}\' to google entry field", textForSearch), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 18
+   testRunner.And("User press \'Enter\' on keyboard after input text to google", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 19
+  testRunner.Then("User check first \'5\' pages for domain \'testautomationday.com\' availability", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
