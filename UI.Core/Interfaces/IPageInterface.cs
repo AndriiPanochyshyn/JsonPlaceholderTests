@@ -15,6 +15,7 @@
         bool IsElementVisible(string cssSelector);
         bool IsElementContainsText(string cssSelector, string record);
 
+        string GetText(string cssSelector);
         void InputText(string cssSelector, string text);
     }
 }

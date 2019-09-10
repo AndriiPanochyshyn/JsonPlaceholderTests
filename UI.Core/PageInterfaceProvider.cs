@@ -2,36 +2,46 @@
 using System;
 using OpenQA.Selenium.Chrome;
 using UI.Core.Interfaces;
+using NUnit.Framework;
 
 namespace UI.Core
 {
     public class PageInterfaceProvider : IDisposable
     {
-        readonly IWebDriver webDriver;
+        private readonly IWebDriver _webDriver;
 
         public IPageInterface PageInterface { get; }
         public INavigator Navigator { get; }
 
         public static TimeSpan WaitUntilTimeout => TimeSpan.FromSeconds(60);
-        public static TimeSpan WaitForNotExpectableTimeout => TimeSpan.FromSeconds(2);
 
         public PageInterfaceProvider()
         {
-            webDriver = StartUpWebDriver();
-            PageInterface = new PageInterface(webDriver);
-            Navigator = new Navigator(webDriver);
+            _webDriver = StartUpWebDriver();
+            PageInterface = new PageInterface(_webDriver);
+            Navigator = new Navigator(_webDriver);
         }
 
-        IWebDriver StartUpWebDriver()
+        private IWebDriver StartUpWebDriver()
         {
-            var webdDriver = new ChromeDriver();
-            webdDriver.Manage().Window.Maximize();
-            return webdDriver;
+            try
+            {
+                ChromeOptions options = new ChromeOptions();
+                options.PageLoadStrategy = PageLoadStrategy.None;
+                var driver = new ChromeDriver(TestContext.CurrentContext.WorkDirectory, options);
+                driver.Manage().Window.Maximize();
+                return driver;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public void Dispose()
         {
-            webDriver.Dispose();
+            _webDriver.Dispose();
         }
     }
 }

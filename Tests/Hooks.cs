@@ -1,15 +1,15 @@
 ﻿using BoDi;
 using TechTalk.SpecFlow;
 using UI.Core;
-using UI.Google;
+using UI.JsonPlaceholder;
 
 namespace Tests
 {
     [Binding]
-    class Hooks
+    internal class Hooks
     {
-        private static PageInterfaceProvider _pageInterfaceProvider;
         private readonly IObjectContainer _container;
+        private static PageInterfaceProvider _pageInterfaceProvider;
 
         public Hooks(IObjectContainer container)
         {
@@ -28,7 +28,7 @@ namespace Tests
             _container.RegisterInstanceAs(_pageInterfaceProvider.PageInterface);
             _container.RegisterInstanceAs(_pageInterfaceProvider.Navigator);
 
-            GoogleMainPageObject.Configure("https://www.google.com/");
+            JsonPlaceholderPageObject.Configure("http://jsonplaceholder.typicode.com//");
         }
 
         [AfterScenario]
