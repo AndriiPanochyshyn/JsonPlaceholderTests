@@ -8,7 +8,7 @@ namespace UI.JsonPlaceholder
 
         #region Resources
 
-        private string ResourceLink(string name) => $"table.resources a[href='/{name}']";
+        private static string ResourceLink(string name) => $"table.resources a[href='/{name}']";
 
         public string ResourcesPosts => $"{ResourceLink("posts")}";
         public string ResourcesComments => $"{ResourceLink("comments")}";

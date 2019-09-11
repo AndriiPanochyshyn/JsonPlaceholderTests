@@ -13,16 +13,16 @@ namespace UI.Core
 
         private Logger()
         {
-            string logFileDirectory = ConfigurationManager.AppSettings["LogFilePath"];
+            var logFileDirectory = ConfigurationManager.AppSettings["LogFilePath"];
             _logFilePath = CreateLogFile(logFileDirectory);
         }
 
-        private string CreateLogFile(string logFileDirectory)
+        private static string CreateLogFile(string logFileDirectory)
         {
-            string logFileName = $"{DateTime.Today:dd.MM.yyyy}.log";
-            string logFilePath = Path.Combine(logFileDirectory, logFileName);
+            var logFileName = $"{DateTime.Today:dd.MM.yyyy}.log";
+            var logFilePath = Path.Combine(logFileDirectory, logFileName);
+            var directoryInfo = new DirectoryInfo(logFileDirectory);
 
-            DirectoryInfo directoryInfo = new DirectoryInfo(logFileDirectory);
             if (!directoryInfo.Exists)
             {
                 directoryInfo.Create();

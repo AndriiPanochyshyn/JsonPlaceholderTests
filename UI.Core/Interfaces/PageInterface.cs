@@ -4,16 +4,17 @@ using System.Threading;
 using OpenQA.Selenium.Support.UI;
 using System.Collections.Generic;
 using NUnit.Framework;
-using System.Linq;
 
 namespace UI.Core.Interfaces
 {
     public class PageInterface : IPageInterface
     {
+        private const int ScrollYShift = 100;
         private const string InputTagName = "input";
         private const string TextareaTagName = "textarea";
-        private const string SelectTagName = "select";
+
         private readonly IWebDriver _webDriver;
+
         private static readonly List<string> InputElementTagNames = new List<string> { InputTagName, TextareaTagName };
 
         private Dictionary<string, string> keyboardKeys = new Dictionary<string, string>

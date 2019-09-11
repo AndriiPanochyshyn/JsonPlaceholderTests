@@ -26,9 +26,7 @@ namespace UI.Core
         {
             try
             {
-                ChromeOptions options = new ChromeOptions();
-                options.PageLoadStrategy = PageLoadStrategy.None;
-                var driver = new ChromeDriver(TestContext.CurrentContext.WorkDirectory, options);
+                var driver = new ChromeDriver(TestContext.CurrentContext.WorkDirectory);
                 driver.Manage().Window.Maximize();
                 return driver;
             }

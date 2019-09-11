@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using Models;
+using Newtonsoft.Json;
+using NUnit.Framework;
 using UI.Core.Abstractions;
 using UI.Core.Interfaces;
 
@@ -12,17 +15,20 @@ namespace UI.JsonPlaceholder.Pages.Comments
 
         public void CheckEmailByBodyInnerText(string bodyInnerText, string expectedEmail)
         {
-            Page.WaitUntilVisible(Elements.Email(1));
-            int blockIndex = 1; 
+            Page.WaitUntilVisible(Elements.Content);
 
-            while (Page.IsElementVisible(Elements.Body(blockIndex)))
+            var text = Page.GetText(Elements.Content);
+            var comments = JsonConvert.DeserializeObject<List<Comment>>(text);
+
+            foreach (var comment in comments)
             {
-                if (Page.GetText(Elements.Body(blockIndex)).Contains(bodyInnerText))
+                if (comment.Body.Contains(bodyInnerText))
                 {
-                    var actualEmail = Page.GetText(Elements.Email(blockIndex));
-                    Assert.That(actualEmail, Is.EqualTo(expectedEmail));
+                    Assert.That(comment.Email, Is.EqualTo(expectedEmail));
+                    return;
                 }
             }
+            Assert.Fail($"Not a single comment contains text '{bodyInnerText}'");
         }
     }
 }
