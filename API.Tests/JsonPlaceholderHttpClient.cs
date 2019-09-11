@@ -7,13 +7,10 @@ namespace API.Tests
     {
         private static readonly HttpClient client = new HttpClient();
 
-        static async Task<T> GetAsync<T>(string path) where T : new()
+        public static async Task<T> GetAsync<T>(string path) where T : new()
         {
             var obj = default(T);
-            HttpResponseMessage response = await client.GetAsync(path);
-
-            if (response.IsSuccessStatusCode)
-                obj = await response.Content.ReadAsStringAsync<T>();
+            var response = await client.GetAsync(path);
             return obj;
         }
     }
