@@ -17,6 +17,7 @@ namespace UI.JsonPlaceholder
             Assert.That(Page.IsElementVisible(Elements.ResourcesPosts));
             Assert.That(Page.IsElementVisible(Elements.ResourcesComments));
             Assert.That(Page.IsElementVisible(Elements.ResourcesPhotos));
+            Assert.That(Page.IsElementVisible(Elements.ResourcesAlbums));
             Assert.That(Page.IsElementVisible(Elements.ResourcesTodos));
             Assert.That(Page.IsElementVisible(Elements.ResourcesUsers));
         }

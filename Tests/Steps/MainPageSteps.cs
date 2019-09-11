@@ -14,6 +14,7 @@ namespace Tests.Steps
         }
 
         [Given(@"User opens JsonPlaceholder main page")]
+        [When(@"User opens JsonPlaceholder main page")]
         public void GivenUserOpensJsonPlaceholderMainPage()
         {
             _ui.Open();

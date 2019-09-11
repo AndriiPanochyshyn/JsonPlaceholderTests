@@ -71,15 +71,37 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContainer.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Features\UserEmailChecking.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UserEmailChecking.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\UserNameChecking.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserNameChecking.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\UserPhotoChecking.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserPhotoChecking.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\UserTodosChecking.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserTodosChecking.feature</DependentUpon>
+    </Compile>
     <Compile Include="Hooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Steps\AlbumsSteps.cs" />
     <Compile Include="Steps\CommentsSteps.cs" />
     <Compile Include="Steps\MainPageSteps.cs" />
+    <Compile Include="Steps\PhotosSteps.cs" />
+    <Compile Include="Steps\PostsSteps.cs" />
+    <Compile Include="Steps\TodosSteps.cs" />
+    <Compile Include="Steps\UsersSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
@@ -90,9 +112,25 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>UserEmailChecking.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\UserNameChecking.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>UserNameChecking.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\UserPhotoChecking.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>UserPhotoChecking.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\UserTodosChecking.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>UserTodosChecking.feature.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{6068c57f-c821-4946-bc31-80f7135d7c17}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UI.Core\UI.Core.csproj">
       <Project>{7ef86233-6bb1-470d-992b-56e6fd025177}</Project>
       <Name>UI.Core</Name>

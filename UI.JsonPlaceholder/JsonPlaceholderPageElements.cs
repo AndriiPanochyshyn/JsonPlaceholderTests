@@ -13,6 +13,7 @@ namespace UI.JsonPlaceholder
         public string ResourcesPosts => $"{ResourceLink("posts")}";
         public string ResourcesComments => $"{ResourceLink("comments")}";
         public string ResourcesPhotos => $"{ResourceLink("photos")}";
+        public string ResourcesAlbums => $"{ResourceLink("albums")}";
         public string ResourcesTodos => $"{ResourceLink("todos")}";
         public string ResourcesUsers => $"{ResourceLink("users")}";
 

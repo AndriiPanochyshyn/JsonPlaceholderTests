@@ -39,5 +39,35 @@ namespace UI.JsonPlaceholder
             Page.WaitUntilVisible(Elements.ResourcesComments);
             Page.ClickOn(Elements.ResourcesComments);
         }
+
+        public void OpenPosts()
+        {
+            Page.WaitUntilVisible(Elements.ResourcesPosts);
+            Page.ClickOn(Elements.ResourcesPosts);
+        }
+
+        public void OpenUsers()
+        {
+            Page.WaitUntilVisible(Elements.ResourcesUsers);
+            Page.ClickOn(Elements.ResourcesUsers);
+        }
+
+        public void OpenPhotos()
+        {
+            Page.WaitUntilVisible(Elements.ResourcesPhotos);
+            Page.ClickOn(Elements.ResourcesPhotos);
+        }
+
+        public void OpenAlbums()
+        {
+            Page.WaitUntilVisible(Elements.ResourcesAlbums);
+            Page.ClickOn(Elements.ResourcesAlbums);
+        }
+
+        public void OpenTodos()
+        {
+            Page.WaitUntilVisible(Elements.ResourcesTodos);
+            Page.ClickOn(Elements.ResourcesTodos);
+        }
     }
 }

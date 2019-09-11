@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{52F988CD-FB66-4EB2-AD5D-21D49AF54EC8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI.Tests", "Tests\UI.Tests.csproj", "{52F988CD-FB66-4EB2-AD5D-21D49AF54EC8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{1277368A-1E10-41CB-A6D9-BE95C2E56E30}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI.JsonPlaceholder", "UI.JsonPlaceholder\UI.JsonPlaceholder.csproj", "{211B535A-023D-4AC4-A14A-E887D849E835}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{6068C57F-C821-4946-BC31-80F7135D7C17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Tests", "API.Tests\API.Tests.csproj", "{F54BA1C7-7328-46AF-BB6C-5542A758A84E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{6068C57F-C821-4946-BC31-80F7135D7C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6068C57F-C821-4946-BC31-80F7135D7C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6068C57F-C821-4946-BC31-80F7135D7C17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F54BA1C7-7328-46AF-BB6C-5542A758A84E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F54BA1C7-7328-46AF-BB6C-5542A758A84E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F54BA1C7-7328-46AF-BB6C-5542A758A84E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F54BA1C7-7328-46AF-BB6C-5542A758A84E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

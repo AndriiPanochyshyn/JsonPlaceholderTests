@@ -2,5 +2,6 @@
 {
     public abstract class PageElements
     {
+        public string Content => "body pre";
     }
 }

@@ -20,9 +20,9 @@ namespace Tests.Steps
         }
 
         [Then(@"User expects comment with text '(.*)' in body to have email '(.*)'")]
-        public void ThenUserExpectsCommentWithTextInBodyToHaveEmail(string bodyInnerText, string email)
+        public void ThenUserExpectsCommentWithTextInBodyToHaveEmail(string bodyInnerText, string expectedEmail)
         {
-            _ui.Pages.Comments.Assert.CheckEmailByBodyInnerText(bodyInnerText, email);
+            _ui.Pages.Comments.Assert.CheckEmailByBodyInnerText(bodyInnerText, expectedEmail);
         }
     }
 }

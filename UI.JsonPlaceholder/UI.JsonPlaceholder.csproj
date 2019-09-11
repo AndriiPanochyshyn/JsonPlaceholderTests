@@ -54,10 +54,28 @@
     <Compile Include="JsonPlaceholderPageAssertions.cs" />
     <Compile Include="JsonPlaceholderPageElements.cs" />
     <Compile Include="JsonPlaceholderPageObject.cs" />
+    <Compile Include="Pages\Albums\AlbumsPageObject.cs" />
+    <Compile Include="Pages\Albums\AlbumsPageAssertions.cs" />
+    <Compile Include="Pages\Albums\AlbumsPageElements.cs" />
     <Compile Include="Pages\Comments\CommentsPageAssertions.cs" />
     <Compile Include="Pages\Comments\CommentsPageElements.cs" />
     <Compile Include="Pages\Comments\CommentsPageObject.cs" />
+    <Compile Include="Pages\CommonPagesLogic\CommonPageObject.cs" />
+    <Compile Include="Pages\CommonPagesLogic\CommonPageAssertions.cs" />
+    <Compile Include="Pages\CommonPagesLogic\CommonPageElements.cs" />
     <Compile Include="Pages\Pages.cs" />
+    <Compile Include="Pages\Photos\PhotosPageObject.cs" />
+    <Compile Include="Pages\Photos\PhotosPageAssertions.cs" />
+    <Compile Include="Pages\Photos\PhotosPageElements.cs" />
+    <Compile Include="Pages\Posts\PostsPageObject.cs" />
+    <Compile Include="Pages\Posts\PostsPageAssertions.cs" />
+    <Compile Include="Pages\Posts\PostsPageElements.cs" />
+    <Compile Include="Pages\Todos\TodosPageObject.cs" />
+    <Compile Include="Pages\Todos\TodosPageAssertions.cs" />
+    <Compile Include="Pages\Todos\TodosPageElements.cs" />
+    <Compile Include="Pages\Users\UsersPageObject.cs" />
+    <Compile Include="Pages\Users\UsersPageAssertions.cs" />
+    <Compile Include="Pages\Users\UsersPageElements.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
