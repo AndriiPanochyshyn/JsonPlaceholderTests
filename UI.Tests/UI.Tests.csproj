@@ -127,6 +127,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Api\Api.csproj">
+      <Project>{7939e968-daa4-4a6f-926b-ae0ca233ff86}</Project>
+      <Name>Api</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{6068c57f-c821-4946-bc31-80f7135d7c17}</Project>
       <Name>Models</Name>

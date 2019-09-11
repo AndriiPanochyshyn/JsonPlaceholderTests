@@ -2,7 +2,7 @@
 
 	- Check that Leanne Graham has more than 3 "completed" TODOs than Ervin Howell
 
-Scenario: Check that Leanne Graham has more than 3 "completed" TODOs than Ervin Howell
+Scenario: UI Check that Leanne Graham has more than 3 "completed" TODOs than Ervin Howell
 
 	Given User opens JsonPlaceholder main page
 	 When User opens Users page

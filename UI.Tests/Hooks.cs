@@ -1,4 +1,5 @@
-﻿using BoDi;
+﻿using Api;
+using BoDi;
 using TechTalk.SpecFlow;
 using UI.Core;
 using UI.JsonPlaceholder;
@@ -28,7 +29,7 @@ namespace Tests
             _container.RegisterInstanceAs(_pageInterfaceProvider.PageInterface);
             _container.RegisterInstanceAs(_pageInterfaceProvider.Navigator);
 
-            JsonPlaceholderPageObject.Configure("http://jsonplaceholder.typicode.com//");
+            JsonPlaceholderPageObject.Configure(Routes.Url);
         }
 
         [AfterScenario]
