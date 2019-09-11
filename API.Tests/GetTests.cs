@@ -4,19 +4,18 @@ using NUnit.Framework;
 using Api;
 using System.Collections.Generic;
 using System.Linq;
-using System.Drawing;
 
 namespace API.Tests
 {
     [TestFixture]
-    internal class Tests
+    internal class GetTests
     {
-        private JsonPlaceholderHttpClient _client;
+        private IRestApi _restClient;
 
         [SetUp]
         protected void SetUp()
         {
-            _client = new JsonPlaceholderHttpClient();
+            _restClient = new JsonPlaceholderHttpClient();
         }
 
         [TestCase("Marcia@name.biz")]
@@ -25,14 +24,12 @@ namespace API.Tests
         {
             const string testBodyInnerText = "ipsum dolorem";
 
-            var comments = await _client.GetAsync<List<Comment>>(Routes.Comments);
+            var comments = await _restClient.GetAsync<List<Comment>>(Routes.Comments);
 
             foreach (var comment in comments)
             {
                 if (comment.Body.Contains(testBodyInnerText))
-                {
                     Assert.That(comment.Email, Is.EqualTo(expectedEmail));
-                }
             }
         }
 
@@ -42,14 +39,12 @@ namespace API.Tests
             const string postTitle = "eos dolorem iste accusantium est eaque quam";
             const string expectedUserName = "Patricia Lebsack";
 
-            var posts = await _client.GetAsync<List<Post>>($"{Routes.Posts}?title={postTitle}");
+            var posts = await _restClient.GetAsync<List<Post>>($"{Routes.Posts}?title={postTitle}");
 
             if (posts.Count == 0)
-            {
                 Assert.Fail($"Post with title '{postTitle}' not found");
-            }
 
-            var user = await _client.GetAsync<User>($"{Routes.Users}/{posts.FirstOrDefault().UserId}");
+            var user = await _restClient.GetAsync<User>($"{Routes.Users}/{posts.FirstOrDefault().UserId}");
 
             Assert.That(user.Name, Is.EqualTo(expectedUserName));
         }
@@ -60,15 +55,13 @@ namespace API.Tests
             const string photoTitle = "ad et natus qui";
             const string expectedEmail = "Sincere@april.biz";
 
-            var photos = await _client.GetAsync<List<Photo>>($"{Routes.Photos}?title={photoTitle}");
+            var photos = await _restClient.GetAsync<List<Photo>>($"{Routes.Photos}?title={photoTitle}");
 
             if (photos.Count == 0)
-            {
                 Assert.Fail($"Photo with title '{photoTitle}' not found");
-            }
 
-            var album = await _client.GetAsync<Album>($"{Routes.Albums}/{photos.FirstOrDefault().AlbumId}");
-            var user = await _client.GetAsync<User>($"{Routes.Users}/{album.UserId}");
+            var album = await _restClient.GetAsync<Album>($"{Routes.Albums}/{photos.FirstOrDefault().AlbumId}");
+            var user = await _restClient.GetAsync<User>($"{Routes.Users}/{album.UserId}");
 
             Assert.That(user.Email, Is.EqualTo(expectedEmail));
         }
@@ -98,8 +91,8 @@ namespace API.Tests
 
         private async Task SetUsers(string firstUserName, string secondUserName)
         {
-            var firstUser = await _client.GetAsync<List<User>>($"{Routes.Users}?name={firstUserName}");
-            var secondUser = await _client.GetAsync<List<User>>($"{Routes.Users}?name={secondUserName}");
+            var firstUser = await _restClient.GetAsync<List<User>>($"{Routes.Users}?name={firstUserName}");
+            var secondUser = await _restClient.GetAsync<List<User>>($"{Routes.Users}?name={secondUserName}");
 
             _firstUserId = firstUser.FirstOrDefault().Id;
             _secondUserId = secondUser.FirstOrDefault().Id;
@@ -108,7 +101,7 @@ namespace API.Tests
 
         private async Task SetTodos()
         {
-            _todos = await _client.GetAsync<List<Todo>>(Routes.Todos);
+            _todos = await _restClient.GetAsync<List<Todo>>(Routes.Todos);
         }
 
         #endregion ApiUserTodosChecking
@@ -117,11 +110,10 @@ namespace API.Tests
         public async Task ApiUserImageCorruptionChecking()
         {
             const int photoId = 4;
-            Image testImage = Resources.TestImage;
 
-            var expectedByteArray = testImage.GetBytes();
-            var photo = await _client.GetAsync<Photo>($"{Routes.Photos}/{photoId}");
-            var actualByteArray = await _client.GetByteAsync(photo.Url);
+            var expectedByteArray = Resources.TestImage.GetBytes();
+            var photo = await _restClient.GetAsync<Photo>($"{Routes.Photos}/{photoId}");
+            var actualByteArray = await _restClient.GetByteAsync(photo.Url);
 
             Assert.That(actualByteArray.SequenceEqual(expectedByteArray));
         }

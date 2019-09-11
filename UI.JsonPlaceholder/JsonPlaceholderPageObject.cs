@@ -9,8 +9,6 @@ namespace UI.JsonPlaceholder
         private readonly INavigator _navigator;
         private static Uri _baseUrl;
 
-        public string CurrentUrl => _navigator.CurrentPath;
-
         public Pages.Pages Pages { get; }
 
         public JsonPlaceholderPageObject(IPageInterface page, JsonPlaceholderPageAssertions pageAssertions, INavigator navigator, Pages.Pages pages) 

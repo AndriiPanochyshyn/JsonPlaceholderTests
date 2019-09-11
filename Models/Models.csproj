@@ -51,6 +51,7 @@
     <Compile Include="Geolocation.cs" />
     <Compile Include="Photo.cs" />
     <Compile Include="Post.cs" />
+    <Compile Include="PostDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Todo.cs" />
     <Compile Include="User.cs" />

@@ -16,13 +16,5 @@ namespace UI.Core.Interfaces
         {
             webDriver.Navigate().GoToUrl(url);
         }
-
-        public string CurrentPath
-        {
-            get
-            {
-                return webDriver.Url;
-            }
-        }
     }
 }
