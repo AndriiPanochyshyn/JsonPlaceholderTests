@@ -5,7 +5,6 @@ using Api;
 using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
-using System.IO;
 
 namespace API.Tests
 {
@@ -120,20 +119,11 @@ namespace API.Tests
             const int photoId = 4;
             Image testImage = Resources.TestImage;
 
-            var expectedByteArray = GetBytesFromImage(testImage);
+            var expectedByteArray = testImage.GetBytes();
             var photo = await _client.GetAsync<Photo>($"{Routes.Photos}/{photoId}");
             var actualByteArray = await _client.GetByteAsync(photo.Url);
 
             Assert.That(actualByteArray.SequenceEqual(expectedByteArray));
-        }
-
-        public byte[] GetBytesFromImage(Image image)
-        {
-            using (var ms = new MemoryStream())
-            {
-                image.Save(ms, image.RawFormat);
-                return ms.ToArray();
-            }
         }
     }
 }
