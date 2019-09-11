@@ -1,4 +1,6 @@
-﻿using System.Net.Http;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace API.Tests
@@ -7,11 +9,12 @@ namespace API.Tests
     {
         private static readonly HttpClient client = new HttpClient();
 
-        public static async Task<T> GetAsync<T>(string path) where T : new()
+        public static async Task<List<TJsonObject>> GetAsync<TJsonObject>(string path)
         {
-            var obj = default(T);
             var response = await client.GetAsync(path);
-            return obj;
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<List<TJsonObject>>(responseBody);
         }
     }
 }
