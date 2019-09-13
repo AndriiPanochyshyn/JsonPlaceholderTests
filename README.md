@@ -19,7 +19,7 @@ Projects Includes With This Solution:
       - Some autotests to demonstrate automation UI testing process implemented with Specflow and NUnit
   - Reporting:
       - System for generation excel report files about autotests execution results
-      - Reports can be found on output folders ..\API.Tests\bin\Debug and ..\UI.Tests\bin\Debug
+      - Reports can be found on output folders ..\API.Tests\bin\Debug and ..\UI.Tests\bin\Debug (Release for release mode)
       
 For proper work need to install SpecFlow and NUnit Test Adapter extensions to Visual Studio
       
