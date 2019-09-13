@@ -1,0 +1,30 @@
+http://jsonplaceholder.typicode.com/posts
+Check that new post can be added into the system
+
+http://jsonplaceholder.typicode.com/posts
+Check that new post can be updated into the system
+
+http://jsonplaceholder.typicode.com/posts
+Check that new post can be deleted from the system
+
++++
+https://jsonplaceholder.typicode.com/comments
+Check if email of user who left a comment with "ipsum dolorem" text in comment's body is "Marcia@name.biz"
+
++++
+https://jsonplaceholder.typicode.com/posts
+Check if user who posted a post with title "eos dolorem iste accusantium est eaque quam" 
+name is "Patricia Lebsack"
+
++++
+https://jsonplaceholder.typicode.com/photos
+Check if photo with title "ad et natus qui" belongs to user with email "Sincere@april.biz"
+
++++
+https://jsonplaceholder.typicode.com/todos 
+check that  Leanne Graham has more than 3 "completed" TODOs than Ervin Howell
+
+https://jsonplaceholder.typicode.com/photos <<Need to implement binary comparison, should pass
+check if image of photo with id 4 isn't corrupted.Use file d32776.png for referrence (see attachment). 
+
+
