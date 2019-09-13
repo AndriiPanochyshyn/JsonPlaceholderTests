@@ -2,7 +2,7 @@
 
 	- Check if email of user who left a comment with "ipsum dolorem" text in comment's body is "Marcia@name.biz"
 
-Scenario Outline: Check if email of user who left a comment with text in comment's body is
+Scenario Outline: UI Check if email of user who left a comment with text in comment's body is
 
 	Given User opens JsonPlaceholder main page
 	 When User opens Comments page

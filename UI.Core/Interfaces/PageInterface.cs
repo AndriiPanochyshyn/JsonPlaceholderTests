@@ -5,10 +5,6 @@ namespace UI.Core.Interfaces
 {
     public class PageInterface : IPageInterface
     {
-        private const int ScrollYShift = 100;
-        private const string InputTagName = "input";
-        private const string TextareaTagName = "textarea";
-
         private readonly IWebDriver _webDriver;
 
         public PageInterface(IWebDriver webDriver)
@@ -23,7 +19,7 @@ namespace UI.Core.Interfaces
 
         public void ClickOn(string cssSelector)
         {
-            IWebElement element = FindElement(cssSelector);
+            var element = FindElement(cssSelector);
             element.Click();
         }
 
@@ -31,7 +27,7 @@ namespace UI.Core.Interfaces
         {
             WaitUntilVisible(cssSelector);
 
-            IWebElement element = FindElement(cssSelector);
+            var element = FindElement(cssSelector);
             return element.Text;
         }
 
@@ -50,7 +46,7 @@ namespace UI.Core.Interfaces
 
         public void WaitUntilVisible(string cssSelector)
         {
-            WebDriverWait wait = new WebDriverWait(_webDriver, PageInterfaceProvider.WaitUntilTimeout);
+            var wait = new WebDriverWait(_webDriver, PageInterfaceProvider.WaitUntilTimeout);
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector(cssSelector)));
         }
     }

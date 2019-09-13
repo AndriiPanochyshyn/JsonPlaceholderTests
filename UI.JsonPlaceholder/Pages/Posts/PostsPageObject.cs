@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Models;
 using UI.Core.Abstractions;
 using UI.Core.Interfaces;
@@ -13,6 +14,11 @@ namespace UI.JsonPlaceholder.Pages.Posts
         public PostsPageObject(IPageInterface page, PostsPageAssertions pageAssertions, CommonPageObject common) : base(page, pageAssertions)
         {
             _common = common;
+        }
+
+        public List<Post> GetAll()
+        {
+            return _common.GetContent<Post>();
         }
 
         public int GetUserIdByTitle(string titleText)

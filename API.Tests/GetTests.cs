@@ -4,6 +4,7 @@ using NUnit.Framework;
 using Api;
 using System.Collections.Generic;
 using System.Linq;
+using Resource = API.Tests.Resources.Resources;
 
 namespace API.Tests
 {
@@ -44,7 +45,7 @@ namespace API.Tests
             if (posts.Count == 0)
                 Assert.Fail($"Post with title '{postTitle}' not found");
 
-            var user = await _restClient.GetAsync<User>($"{Routes.Users}/{posts.FirstOrDefault().UserId}");
+            var user = await _restClient.GetAsync<User>($"{Routes.Users}/{posts.FirstOrDefault()?.UserId}");
 
             Assert.That(user.Name, Is.EqualTo(expectedUserName));
         }
@@ -60,7 +61,7 @@ namespace API.Tests
             if (photos.Count == 0)
                 Assert.Fail($"Photo with title '{photoTitle}' not found");
 
-            var album = await _restClient.GetAsync<Album>($"{Routes.Albums}/{photos.FirstOrDefault().AlbumId}");
+            var album = await _restClient.GetAsync<Album>($"{Routes.Albums}/{photos.FirstOrDefault()?.AlbumId}");
             var user = await _restClient.GetAsync<User>($"{Routes.Users}/{album.UserId}");
 
             Assert.That(user.Email, Is.EqualTo(expectedEmail));
@@ -75,11 +76,7 @@ namespace API.Tests
         [TestCase(3, "Leanne Graham", "Ervin Howell")]
         public async Task ApiUserTodosChecking(int difference, string firstUserName, string secondUserName)
         {
-            Task[] tasks = new Task[]
-            {
-                SetUsers(firstUserName, secondUserName),
-                SetTodos()
-            };
+            Task[] tasks = { SetUsers(firstUserName, secondUserName), SetTodos() };
 
             await Task.WhenAll(tasks);
 
@@ -111,7 +108,7 @@ namespace API.Tests
         {
             const int photoId = 4;
 
-            var expectedByteArray = Resources.TestImage.GetBytes();
+            var expectedByteArray = Resource.TestImage.GetBytes();
             var photo = await _restClient.GetAsync<Photo>($"{Routes.Photos}/{photoId}");
             var actualByteArray = await _restClient.GetByteAsync(photo.Url);
 

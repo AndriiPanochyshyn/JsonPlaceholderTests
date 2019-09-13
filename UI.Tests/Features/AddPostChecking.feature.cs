@@ -18,21 +18,23 @@ namespace Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("UserEmailChecking")]
-    public partial class UserEmailCheckingFeature
+    [NUnit.Framework.DescriptionAttribute("AddPostChecking")]
+    public partial class AddPostCheckingFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "UserEmailChecking.feature"
+#line 1 "AddPostChecking.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "UserEmailChecking", "\t- Check if email of user who left a comment with \"ipsum dolorem\" text in comment" +
-                    "\'s body is \"Marcia@name.biz\"", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "AddPostChecking", "\t- Check that new post can be added into the system\r\n\r\n\tImportant: the resource w" +
+                    "ill not be really created on the server but it will be faked as if.\r\n    In othe" +
+                    "r words, if you try to access a post using 101 as an id, you\'ll get a 404 error." +
+                    "", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -71,21 +73,43 @@ namespace Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("UI Check if email of user who left a comment with text in comment\'s body is")]
-        [NUnit.Framework.TestCaseAttribute("ipsum dolorem", "Marcia@name.biz", null)]
-        [NUnit.Framework.TestCaseAttribute("ipsum dolorem", "Jackeline@eva.tv", null)]
-        public virtual void UICheckIfEmailOfUserWhoLeftACommentWithTextInCommentsBodyIs(string commentInnerText, string email, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("UI Check that new post can be added into the system")]
+        public virtual void UICheckThatNewPostCanBeAddedIntoTheSystem()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("UI Check if email of user who left a comment with text in comment\'s body is", null, exampleTags);
-#line 5
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("UI Check that new post can be added into the system", null, ((string[])(null)));
+#line 8
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 7
- testRunner.Given("User opens JsonPlaceholder main page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 8
-  testRunner.When("User opens Comments page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 9
-  testRunner.Then(string.Format("User expects comment with text \'{0}\' in body to have email \'{1}\'", commentInnerText, email), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "UserId",
+                        "Title",
+                        "Body"});
+            table1.AddRow(new string[] {
+                        "1",
+                        "Test title",
+                        "Test body"});
+#line 10
+ testRunner.Given("User adds new post to system through api request", ((string)(null)), table1, "Given ");
+#line 13
+  testRunner.Then("User expects reponse status to be \'Created\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 15
+  testRunner.When("User opens JsonPlaceholder main page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 16
+   testRunner.And("User opens Posts page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "User id",
+                        "Id",
+                        "Title",
+                        "Body"});
+            table2.AddRow(new string[] {
+                        "1",
+                        "101",
+                        "Test title",
+                        "Test body"});
+#line 17
+  testRunner.Then("User expects post doesn\'t exist", ((string)(null)), table2, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

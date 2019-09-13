@@ -2,7 +2,7 @@
 
 	- Check if photo with title "ad et natus qui" belongs to user with email "Sincere@april.biz"
 
-Scenario: Check if photo with specific title belongs to user with specific email
+Scenario: UI Check if photo with specific title belongs to user with specific email
 
 	Given User opens JsonPlaceholder main page
 	 When User opens Photos page

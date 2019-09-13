@@ -19,11 +19,9 @@ namespace UI.JsonPlaceholder.Pages.Comments
         {
             foreach (var comment in _common.GetContent<Comment>())
             {
-                if (comment.Body.Contains(bodyInnerText))
-                {
-                    Assert.That(comment.Email, Is.EqualTo(expectedEmail));
-                    return;
-                }
+                if (!comment.Body.Contains(bodyInnerText)) continue;
+                Assert.That(comment.Email, Is.EqualTo(expectedEmail));
+                return;
             }
             Assert.Fail($"Not a single comment contains body with text '{bodyInnerText}'");
         }

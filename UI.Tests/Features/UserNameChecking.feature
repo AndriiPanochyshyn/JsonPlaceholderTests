@@ -2,7 +2,7 @@
 
 	- Check if user who posted a post with title "eos dolorem iste accusantium est eaque quam" name is "Patricia Lebsack"
 
-Scenario: Check if user who posted a post with specific title has specific name
+Scenario: UI Check if user who posted a post with specific title has specific name
 
 	Given User opens JsonPlaceholder main page
 	 When User opens Posts page

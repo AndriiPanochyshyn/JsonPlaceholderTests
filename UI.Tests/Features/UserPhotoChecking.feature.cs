@@ -71,10 +71,10 @@ namespace Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Check if photo with specific title belongs to user with specific email")]
-        public virtual void CheckIfPhotoWithSpecificTitleBelongsToUserWithSpecificEmail()
+        [NUnit.Framework.DescriptionAttribute("UI Check if photo with specific title belongs to user with specific email")]
+        public virtual void UICheckIfPhotoWithSpecificTitleBelongsToUserWithSpecificEmail()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check if photo with specific title belongs to user with specific email", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("UI Check if photo with specific title belongs to user with specific email", null, ((string[])(null)));
 #line 5
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -104,4 +104,3 @@ this.ScenarioInitialize(scenarioInfo);
 }
 #pragma warning restore
 #endregion
-

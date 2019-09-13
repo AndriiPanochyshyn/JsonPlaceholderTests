@@ -5,7 +5,7 @@ namespace UI.Core.Interfaces
 {
     public class Navigator : INavigator
     {
-        IWebDriver webDriver;
+        private readonly IWebDriver webDriver;
 
         public Navigator(IWebDriver webDriver)
         {

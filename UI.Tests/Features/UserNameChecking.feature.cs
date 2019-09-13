@@ -71,10 +71,10 @@ namespace Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Check if user who posted a post with specific title has specific name")]
-        public virtual void CheckIfUserWhoPostedAPostWithSpecificTitleHasSpecificName()
+        [NUnit.Framework.DescriptionAttribute("UI Check if user who posted a post with specific title has specific name")]
+        public virtual void UICheckIfUserWhoPostedAPostWithSpecificTitleHasSpecificName()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check if user who posted a post with specific title has specific name", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("UI Check if user who posted a post with specific title has specific name", null, ((string[])(null)));
 #line 5
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -99,4 +99,3 @@ this.ScenarioInitialize(scenarioInfo);
 }
 #pragma warning restore
 #endregion
-

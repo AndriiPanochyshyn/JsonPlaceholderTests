@@ -18,20 +18,21 @@ namespace Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("UserTodosChecking")]
-    public partial class UserTodosCheckingFeature
+    [NUnit.Framework.DescriptionAttribute("UpdatePostChecking")]
+    public partial class UpdatePostCheckingFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "UserTodosChecking.feature"
+#line 1 "UpdatePostChecking.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "UserTodosChecking", "\t- Check that Leanne Graham has more than 3 \"completed\" TODOs than Ervin Howell", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "UpdatePostChecking", "\t- Check that new post can be updated into the system\r\n\r\n\tImportant: the resource" +
+                    " will not be really updated on the server but it will be faked as if.", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -70,33 +71,47 @@ namespace Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("UI Check that Leanne Graham has more than 3 \"completed\" TODOs than Ervin Howell")]
-        public virtual void UICheckThatLeanneGrahamHasMoreThan3CompletedTODOsThanErvinHowell()
+        [NUnit.Framework.DescriptionAttribute("UI Check that new post can be updated into the system")]
+        [NUnit.Framework.TestCaseAttribute("put", null)]
+        [NUnit.Framework.TestCaseAttribute("patch", null)]
+        public virtual void UICheckThatNewPostCanBeUpdatedIntoTheSystem(string method, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("UI Check that Leanne Graham has more than 3 \"completed\" TODOs than Ervin Howell", null, ((string[])(null)));
-#line 5
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("UI Check that new post can be updated into the system", null, exampleTags);
+#line 7
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 7
- testRunner.Given("User opens JsonPlaceholder main page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 8
-  testRunner.When("User opens Users page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name"});
+                        "UserId",
+                        "Id",
+                        "Title",
+                        "Body"});
             table1.AddRow(new string[] {
-                        "Leanne Graham"});
-            table1.AddRow(new string[] {
-                        "Ervin Howell"});
+                        "1",
+                        "1",
+                        "Test title",
+                        "Test body"});
 #line 9
-   testRunner.And("User get user ids with names:", ((string)(null)), table1, "And ");
-#line 13
-   testRunner.And("User opens JsonPlaceholder main page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given(string.Format("User {0} post in the system through api request", method), ((string)(null)), table1, "Given ");
+#line 12
+  testRunner.Then("User expects reponse status to be \'OK\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 14
-   testRunner.And("User opens Todos page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.When("User opens JsonPlaceholder main page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 15
-  testRunner.Then("User expects user with name \'Leanne Graham\' has more than \'3\' completed TODOs tha" +
-                    "n user with name \'Ervin Howell\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+   testRunner.And("User opens Posts page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "User id",
+                        "Id",
+                        "Title",
+                        "Body"});
+            table2.AddRow(new string[] {
+                        "1",
+                        "1",
+                        "Test title",
+                        "Test body"});
+#line 16
+  testRunner.Then("User expects post doesn\'t exist", ((string)(null)), table2, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

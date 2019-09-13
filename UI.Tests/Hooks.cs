@@ -10,6 +10,7 @@ namespace Tests
     internal class Hooks
     {
         private readonly IObjectContainer _container;
+        private static IRestApi _restClient;
         private static PageInterfaceProvider _pageInterfaceProvider;
 
         public Hooks(IObjectContainer container)
@@ -21,6 +22,7 @@ namespace Tests
         public static void BeforeTests()
         {
             _pageInterfaceProvider = new PageInterfaceProvider();
+            _restClient = new JsonPlaceholderHttpClient();
         }
 
         [BeforeScenario]
@@ -28,6 +30,7 @@ namespace Tests
         {
             _container.RegisterInstanceAs(_pageInterfaceProvider.PageInterface);
             _container.RegisterInstanceAs(_pageInterfaceProvider.Navigator);
+            _container.RegisterInstanceAs(_restClient);
 
             JsonPlaceholderPageObject.Configure(Routes.Url);
         }

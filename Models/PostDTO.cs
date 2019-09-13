@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json;
+using TechTalk.SpecFlow;
 
 namespace Models
 {
-    public class PostDTO
+    [Binding]
+    public class PostDTO : StepParameter<PostDTO>
     {
         [JsonProperty("userId")]
         public int UserId { get; set; }

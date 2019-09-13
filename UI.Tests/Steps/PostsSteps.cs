@@ -1,4 +1,6 @@
-﻿using TechTalk.SpecFlow;
+﻿using Models;
+using NUnit.Framework;
+using TechTalk.SpecFlow;
 using UI.JsonPlaceholder;
 
 namespace Tests.Steps
@@ -26,6 +28,33 @@ namespace Tests.Steps
         {
             var userId = _ui.Pages.Posts.GetUserIdByTitle(title);
             _dataContainer.AddUserId(title, userId);
+        }
+
+        [Then(@"User expects post to be exist")]
+        public void ThenUserExpectsPostToBeExist(Post expectedPost)
+        {
+            var actualPosts = _ui.Pages.Posts.GetAll();
+
+            foreach (var actualPost in actualPosts)
+            {
+                if (actualPost.Equals(expectedPost))
+                {
+                    return;
+                }
+            }
+
+            Assert.Fail($"Posts list doesn't contail post: {expectedPost}");
+        }
+
+        [Then(@"User expects post doesn't exist")]
+        public void ThenUserExpectsPostDoesnTExist(Post expectedPost)
+        {
+            var actualPosts = _ui.Pages.Posts.GetAll();
+
+            foreach (var actualPost in actualPosts)
+            {
+                Assert.That(actualPost.Equals(expectedPost), Is.False);
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using Models;
 using NUnit.Framework;
@@ -24,7 +25,7 @@ namespace API.Tests
         public async Task ApiCheckNewPostCanBeAddedIntoTheSystem(int userId, string title, string body)
         {
             const int newPostId = 101;
-            var testPost = new PostDTO()
+            var testPost = new PostDTO
             {
                 UserId = userId,
                 Title = title,
@@ -43,7 +44,7 @@ namespace API.Tests
         [TestCase(UpdateMethod.Patch, 1, 1, "Updated test title", "Updated test body")]
         public async Task ApiCheckPostCanBeUpdatedIntoTheSystem(UpdateMethod updateMethod, int userId, int id, string title, string body)
         {
-            var testUpdateData = new Post()
+            var testUpdateData = new Post
             {
                 UserId = userId,
                 Id = id,
@@ -51,11 +52,18 @@ namespace API.Tests
                 Body = body
             };
 
-            var updateResponseMessade = new HttpResponseMessage();
-            if (updateMethod == UpdateMethod.Put)
-                updateResponseMessade = await _restClient.PutAsync($"{Routes.Posts}/{id}", testUpdateData);
-            else if (updateMethod == UpdateMethod.Patch)
-                updateResponseMessade = await _restClient.PatchAsync($"{Routes.Posts}/{id}", testUpdateData);
+            HttpResponseMessage updateResponseMessade;
+            switch (updateMethod)
+            {
+                case UpdateMethod.Put:
+                    updateResponseMessade = await _restClient.PutAsync($"{Routes.Posts}/{id}", testUpdateData);
+                    break;
+                case UpdateMethod.Patch:
+                    updateResponseMessade = await _restClient.PatchAsync($"{Routes.Posts}/{id}", testUpdateData);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(updateMethod), updateMethod, null);
+            }
 
             Assert.That(updateResponseMessade.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         }

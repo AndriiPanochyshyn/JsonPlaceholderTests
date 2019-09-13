@@ -18,21 +18,21 @@ namespace Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("UserEmailChecking")]
-    public partial class UserEmailCheckingFeature
+    [NUnit.Framework.DescriptionAttribute("DeletePostChecking")]
+    public partial class DeletePostCheckingFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "UserEmailChecking.feature"
+#line 1 "DeletePostChecking.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "UserEmailChecking", "\t- Check if email of user who left a comment with \"ipsum dolorem\" text in comment" +
-                    "\'s body is \"Marcia@name.biz\"", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "DeletePostChecking", "\t- Check that new post can be deleted from the system\r\n\r\n\tImportant: the resource" +
+                    " will not be really deleted on the server but it will be faked as if.", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -71,21 +71,35 @@ namespace Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("UI Check if email of user who left a comment with text in comment\'s body is")]
-        [NUnit.Framework.TestCaseAttribute("ipsum dolorem", "Marcia@name.biz", null)]
-        [NUnit.Framework.TestCaseAttribute("ipsum dolorem", "Jackeline@eva.tv", null)]
-        public virtual void UICheckIfEmailOfUserWhoLeftACommentWithTextInCommentsBodyIs(string commentInnerText, string email, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("UI Check that new post can be deleted from the system")]
+        public virtual void UICheckThatNewPostCanBeDeletedFromTheSystem()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("UI Check if email of user who left a comment with text in comment\'s body is", null, exampleTags);
-#line 5
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("UI Check that new post can be deleted from the system", null, ((string[])(null)));
+#line 7
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 7
- testRunner.Given("User opens JsonPlaceholder main page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 8
-  testRunner.When("User opens Comments page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
-  testRunner.Then(string.Format("User expects comment with text \'{0}\' in body to have email \'{1}\'", commentInnerText, email), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Given("User deletes post with id \'1\' from the system through api request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 10
+  testRunner.Then("User expects reponse status to be \'OK\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 12
+  testRunner.When("User opens JsonPlaceholder main page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 13
+   testRunner.And("User opens Posts page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "User id",
+                        "Id",
+                        "Title",
+                        "Body"});
+            table1.AddRow(new string[] {
+                        "1",
+                        "1",
+                        "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                        "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit m" +
+                            "olestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"});
+#line 14
+  testRunner.Then("User expects post to be exist", ((string)(null)), table1, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

@@ -1,10 +1,14 @@
 ﻿using Newtonsoft.Json;
+using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist.Attributes;
 
 namespace Models
 {
-    public class Post
+    [Binding]
+    public class Post : StepParameter<Post>
     {
         [JsonProperty("userId")]
+        [TableAliases("User id")]
         public int UserId { get; set; }
 
         [JsonProperty("id")]
@@ -15,5 +19,15 @@ namespace Models
 
         [JsonProperty("body")]
         public string Body { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            return CheckEquality(this, obj);
+        }
+
+        public override string ToString()
+        {
+            return $"UserId - {UserId}; Id - {Id}; Title - {Title}; Body - {Body}";
+        }
     }
 }
