@@ -108,7 +108,7 @@ namespace API.Tests
         {
             const int photoId = 4;
 
-            var expectedByteArray = Resource.TestImage.GetBytes();
+            var expectedByteArray = Resource.d32776.GetBytes();
             var photo = await _restClient.GetAsync<Photo>($"{Routes.Photos}/{photoId}");
             var actualByteArray = await _restClient.GetByteAsync(photo.Url);
 

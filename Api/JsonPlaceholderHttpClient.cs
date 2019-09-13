@@ -45,7 +45,7 @@ namespace Api
             using (var client = new HttpClient())
             {
                 var jsonObject = JsonConvert.SerializeObject(content);
-                var postContent = new StringContent(jsonObject.ToString(), Encoding.UTF8, "application/json");
+                var postContent = new StringContent(jsonObject, Encoding.UTF8, "application/json");
                 return await client.PostAsync(url, postContent);
             }
         }
@@ -55,7 +55,7 @@ namespace Api
             using (var client = new HttpClient())
             {
                 var jsonObject = JsonConvert.SerializeObject(content);
-                var putContent = new StringContent(jsonObject.ToString(), Encoding.UTF8, "application/json");
+                var putContent = new StringContent(jsonObject, Encoding.UTF8, "application/json");
                 return await client.PutAsync(url, putContent);
             }
         }
@@ -65,7 +65,7 @@ namespace Api
             using (var client = new HttpClient())
             {
                 var jsonObject = JsonConvert.SerializeObject(content);
-                var patchContent = new StringContent(jsonObject.ToString(), Encoding.UTF8, "application/json");
+                var patchContent = new StringContent(jsonObject, Encoding.UTF8, "application/json");
                 return await client.PatchAsync(url, patchContent);
             }
         }

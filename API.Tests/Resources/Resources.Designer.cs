@@ -63,9 +63,9 @@ namespace API.Tests.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap TestImage {
+        internal static System.Drawing.Bitmap d32776 {
             get {
-                object obj = ResourceManager.GetObject("TestImage", resourceCulture);
+                object obj = ResourceManager.GetObject("d32776", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
