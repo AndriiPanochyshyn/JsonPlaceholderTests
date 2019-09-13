@@ -68,7 +68,6 @@
     <Compile Include="Interfaces\IPageInterface.cs" />
     <Compile Include="Interfaces\Navigator.cs" />
     <Compile Include="Interfaces\PageInterface.cs" />
-    <Compile Include="Logger.cs" />
     <Compile Include="PageInterfaceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,5 +1,9 @@
 ﻿using Api;
 using BoDi;
+using NUnit.Framework;
+using NUnit.Framework.Interfaces;
+using Reporting;
+using Reporting.ExcelReport;
 using TechTalk.SpecFlow;
 using UI.Core;
 using UI.JsonPlaceholder;
@@ -38,11 +42,20 @@ namespace Tests
         [AfterScenario]
         public void ScenarioTearDown()
         {
+            var testResult = TestContext.CurrentContext.Result;
+            if (testResult.Outcome.Status == TestStatus.Failed)
+                Logger.Instance.TestFailed(testResult.Message);
+            else
+                Logger.Instance.TestPassed();
         }
 
         [AfterTestRun]
         public static void AfterTests()
         {
+            if (LogDataWriter.TestResults.Count > 0)
+            {
+                ExcelFileReportGenerator.CreateReport(LogDataWriter.TestResults);
+            }
             _pageInterfaceProvider.Dispose();
         }
     }

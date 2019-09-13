@@ -5,6 +5,8 @@ using Models;
 using NUnit.Framework;
 using Api;
 using System.Net.Http;
+using NUnit.Framework.Interfaces;
+using Reporting;
 
 namespace API.Tests
 {
@@ -17,6 +19,16 @@ namespace API.Tests
         protected void SetUp()
         {
             _restClient = new JsonPlaceholderHttpClient();
+        }
+
+        [TearDown]
+        public void Teardown()
+        {
+            var testResult = TestContext.CurrentContext.Result;
+            if (testResult.Outcome.Status == TestStatus.Failed)
+                Logger.Instance.TestFailed(testResult.Message);
+            else
+                Logger.Instance.TestPassed();
         }
 
         // Important: the resource will not be really created on the server but it will be faked as if.

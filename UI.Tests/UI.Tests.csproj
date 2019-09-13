@@ -151,6 +151,10 @@
       <Project>{6068c57f-c821-4946-bc31-80f7135d7c17}</Project>
       <Name>Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Reporting\Reporting.csproj">
+      <Project>{3437d508-317f-4cc6-877c-849914cfd93a}</Project>
+      <Name>Reporting</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UI.Core\UI.Core.csproj">
       <Project>{7ef86233-6bb1-470d-992b-56e6fd025177}</Project>
       <Name>UI.Core</Name>

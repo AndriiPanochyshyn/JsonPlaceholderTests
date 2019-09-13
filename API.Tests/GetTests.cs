@@ -4,6 +4,8 @@ using NUnit.Framework;
 using Api;
 using System.Collections.Generic;
 using System.Linq;
+using NUnit.Framework.Interfaces;
+using Reporting;
 using Resource = API.Tests.Resources.Resources;
 
 namespace API.Tests
@@ -17,6 +19,16 @@ namespace API.Tests
         protected void SetUp()
         {
             _restClient = new JsonPlaceholderHttpClient();
+        }
+
+        [TearDown]
+        public void Teardown()
+        {
+            var testResult = TestContext.CurrentContext.Result;
+            if (testResult.Outcome.Status == TestStatus.Failed)
+                Logger.Instance.TestFailed(testResult.Message);
+            else
+                Logger.Instance.TestPassed();
         }
 
         [TestCase("Marcia@name.biz")]
