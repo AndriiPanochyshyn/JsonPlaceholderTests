@@ -13,10 +13,13 @@ Projects Includes With This Solution:
       - http://jsonplaceholder.typicode.com/ website interaction interface, implemented with Page Object pattern approach
   - Models:
       - Objects that can be used during automation testing process in both Api and UI autotests
-  - API.Test
+  - API.Test:
       - Some autotests to demonstrate automation api testing process implemented with NUnit
-  - UI.Tests
+  - UI.Tests:
       - Some autotests to demonstrate automation UI testing process implemented with Specflow and NUnit
+  - Reporting:
+      - System for generation excel report files about autotests execution results
+      - Reports can be found on output folders ..\API.Tests\bin\Debug and ..\UI.Tests\bin\Debug
       
 For proper work need to install SpecFlow and NUnit Test Adapter extensions to Visual Studio
       
@@ -33,7 +36,7 @@ Solution: Add d32776.png file to resources.
 
 
 To avoid all errors and for convenient reporting autotesting process can be executed with CI remotely on some customized environment
-    
+
 # Tests
 
 http://jsonplaceholder.typicode.com/posts
