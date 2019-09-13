@@ -18,6 +18,8 @@ Projects Includes With This Solution:
   - UI.Tests
       - Some autotests to demonstrate automation UI testing process implemented with Specflow and NUnit
       
+For proper work need to install SpecFlow and NUnit Test Adapter extensions to Visual Studio
+      
 Exceptions:
 
 Error: Chrome browser and chromedriver.exe for automation UI testing can be incompatible on a certain environment.
